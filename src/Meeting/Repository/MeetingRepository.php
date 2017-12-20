@@ -2,26 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Application\Repository;
+namespace Meeting\Repository;
 
-use Application\Collectioon\MeetingCollection;
-use Application\Entity\Meeting;
-use Application\Exception\FilmNotFoundException;
+use Meeting\Collectioon\MeetingCollection;
+use Meeting\Entity\Meeting;
+use Meeting\Exception\MeetingNotFoundException;
 use PDO;
 
 final class MeetingRepository{
 
 	private $pdo;
 
-	public function __construct(pdo $pdo){
+	public function __construct(PDO $pdo){
 		$this->pdo = $pdo;
 	}
 
-	public function fetchAll(){
-		$result = $this->pdo->query('select * from meeting');
+	public function fetchAll() : MeetingCollection
+	{
+		$result = $this->pdo->query('SELECT id, titre, description, date_debut, date_fin FROM meeting');
 		$meetings = [];
 		while ($meeting = $result->fetch()){
-			$meetings = new meeting($meeting['titre'],$meeting['description'],$meeting['date_debut'],$meeting['date_fin']);
+			$meetings[] = new meeting($meeting['titre'],$meeting['description'],$meeting['date_debut'],$meeting['date_fin']);
 		}
 
 		return new MeetingCollection(...$meetings);

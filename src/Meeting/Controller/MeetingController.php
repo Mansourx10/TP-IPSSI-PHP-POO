@@ -1,24 +1,25 @@
 <?php
 declare(strict_types=1);
 
-namespace Application\Controller;
+namespace Meeting\Controller;
 
-use Application\Repository\MeetingRepository;
+use Meeting\Repository\MeetingRepository;
 
 final class MeetingController
 {
-	private $MeetingRepository;
 
-	public function __construct(MeetingRepository $MeetingRepository)
+	private $meetingRepository;
+
+	public function __construct(MeetingRepository $meetingRepository)
 	{
-		$this->MeetingRepository = $MeetingRepository;
+		$this->meetingRepository = $MeetingRepository;
 	}
 
 	public function indexAction() : string{
-		$Meeting = $this->MeetingRepository->fetchAll();
+		$Meetings = $this->MeetingRepository->fetchAll();
 
 		ob_start();
-		include __DIR__.'/../../views/meeting.phtml';
+		include __DIR__.'/../../../views/meeting.phtml';
 		return ob_clean();
 	}
 

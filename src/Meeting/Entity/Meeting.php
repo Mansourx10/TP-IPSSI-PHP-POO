@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Application\Entity;
+namespace Meeting\Entity;
 
 final class Meeting {
 
@@ -18,18 +18,25 @@ final class Meeting {
 					$this->date_fin = $date_fin;
 	}
 
-	public function getTitre(){
+	public function getTitre()
+	{
 		return $this->titre;
 	}
-	public function getDesc(){
+
+	public function getDesc()
+	{
 		return $this->description;
 	}
-	public function getdate_debut(){
+
+	public function getdate_debut()
+	{
 			return $this->date_debut;
-		}
-	public function getdate_fin(){
+	}
+
+	public function getdate_fin()
+	{
 			return $this->date_fin;
-		}
+	}
 
 
 }

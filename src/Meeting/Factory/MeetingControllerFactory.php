@@ -2,15 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Application\Factory;
+namespace Meeting\Factory;
 
-use Controller\MeetingController;
-use Repository\MeetingRepository;
+use Meeting\Controller\MeetingController;
+use Meeting\Repository\MeetingRepository;
+use Psr\Container\ContainerInterface;
 
-class MeetingControllerFactory 
+final class MeetingControllerFactory 
 {
-	public function __invoke(ContainerInterface $container) : MeetingController {
-
-		return new MeetingController()
+	public function __invoke(ContainerInterface $container) : MeetingController 
+	{
+		$meetingRepository = $container->get(MeetingRepository::class);
+		
+		return new MeetingController($meetingRepository);
 	}	
 }
