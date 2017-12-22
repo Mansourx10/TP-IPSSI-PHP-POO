@@ -12,6 +12,7 @@ use Meeting\Controller\MeetingController;
 use Exception;
 
 use function explode;
+use Meeting\Controller\ShowMeetingController;
 use function preg_match;
 use function substr;
 use function urldecode;
@@ -34,6 +35,13 @@ final class ParseUriStaticNameHelper implements ParseUriHelper
 
         if ($requestUri === '/meeting') {
             return MeetingController::class;
+        }
+
+        if (preg_match('#/meeting/.*#', $requestUri)) {
+            $requestUriParams = explode('/', $requestUri);
+            $_GET['name'] = urldecode($requestUriParams[2]);
+
+            return ShowMeetingController::class;
         }
 
         if (preg_match('#/film/.*#', $requestUri)) {

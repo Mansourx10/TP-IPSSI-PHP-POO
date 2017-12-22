@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Meeting\Repository;
 
+use Meeting\Collection\CollectionOrganisateur;
 use Meeting\Collection\MeetingCollection;
 use Meeting\Entity\Meeting;
+use Meeting\Entity\Organisateur;
+use Meeting\Exception\MeetingNotFoundException;
 use PDO;
 
 final class MeetingRepository{
@@ -27,5 +30,30 @@ final class MeetingRepository{
 		return new MeetingCollection(...$meetings);
 
 	}
+
+    /**
+     * @param string $name
+     * @return CollectionOrganisateur
+     */
+    public function getOrganisateur(string $name) : CollectionOrganisateur
+    {
+        $statement = $this->pdo->prepare('SELECT u.id, u.nom, u.prenom FROM utilisateur as u INNER JOIN organisateur as o ON o.id_utilisateur = u.id WHERE o.id_meeting = :id_meeting');
+        $statement->execute([':id_meeting' => $name]);
+        $organizers = $statement->fetchall();
+        if (!$organizers) {
+            throw new MeetingNotFoundException();
+        }
+        $collection = [];
+        foreach ($organizers as $organizer)
+        {
+            $collection[] = new Organisateur($organizer['nom'], $organizer['prenom']);
+        }
+        return new CollectionOrganisateur(...$collection);
+    }
+
+    public function getParticipant(){
+        
+    }
+
 
 }

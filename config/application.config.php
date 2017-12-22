@@ -27,6 +27,8 @@ use Meeting\Controller\MeetingController;
 use Meeting\Repository\MeetingRepository;
 use Meeting\Factory\MeetingControllerFactory;
 use Meeting\Factory\MeetingRepositoryFactory;
+use Meeting\Controller\ShowMeetingController;
+use Meeting\Factory\ShowMeetingControllerFactory;
 
 
 
@@ -52,7 +54,8 @@ return [
     
         // Configurations liées auz meetings
         MeetingController::class => MeetingControllerFactory::class,
-        meetingrepository::class => meetingrepositoryfactory::class
+        MeetingRepository::class => MeetingRepositoryFactory::class,
+        ShowMeetingController::class => ShowMeetingControllerFactory::class
 
     ],
 ];
