@@ -11,7 +11,7 @@ final class Meeting {
 	private $date_debut;
 	private $date_fin;
 
-	public function __construct(string $titre, string $desc, date $date_debut, date $date_fin){
+	public function __construct(string $titre, string $desc, string $date_debut, string $date_fin){
 		$this->titre = $titre;
 			$this->description = $desc;
 				$this->date_debut = $date_debut;
@@ -28,12 +28,12 @@ final class Meeting {
 		return $this->description;
 	}
 
-	public function getdate_debut()
+	public function getDate_debut()
 	{
 			return $this->date_debut;
 	}
 
-	public function getdate_fin()
+	public function getDate_fin()
 	{
 			return $this->date_fin;
 	}

@@ -12,15 +12,16 @@ final class MeetingController
 
 	public function __construct(MeetingRepository $meetingRepository)
 	{
-		$this->meetingRepository = $MeetingRepository;
+		$this->meetingRepository = $meetingRepository;
 	}
 
-	public function indexAction() : string{
-		$Meetings = $this->MeetingRepository->fetchAll();
+	public function indexAction() : string
+    {
+		$Meetings = $this->meetingRepository->fetchAll();
 
 		ob_start();
 		include __DIR__.'/../../../views/meeting.phtml';
-		return ob_clean();
+		return ob_get_clean().'';
 	}
 
 }

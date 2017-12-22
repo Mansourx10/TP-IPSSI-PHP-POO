@@ -24,9 +24,9 @@ use Cinema\Factory\ShowFilmControllerFactory;
 use Cinema\Repository\FilmRepository;
 //meeting
 use Meeting\Controller\MeetingController;
+use Meeting\Repository\MeetingRepository;
 use Meeting\Factory\MeetingControllerFactory;
 use Meeting\Factory\MeetingRepositoryFactory;
-use Meeting\Repository\MeetingRepository;
 
 
 
@@ -52,8 +52,7 @@ return [
     
         // Configurations liées auz meetings
         MeetingController::class => MeetingControllerFactory::class,
+        meetingrepository::class => meetingrepositoryfactory::class
 
-        MeetingRepository::class => MeetingRepositoryFactory::class,
-        
     ],
 ];

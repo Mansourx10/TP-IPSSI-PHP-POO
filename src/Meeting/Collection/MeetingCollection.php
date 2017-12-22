@@ -1,5 +1,5 @@
 <?php
-declare(stric_types=1);
+declare(strict_types=1);
 
 namespace Meeting\Collection;
 
@@ -11,8 +11,8 @@ use IteratorIterator;
 final class MeetingCollection extends IteratorIterator implements Iterator {
 
 
-	public function __construct(Meeting ...$Meeetings){
-		parent::__construct(new ArrayIterator($Meetings));
+	public function __construct(Meeting ...$meetings){
+		parent::__construct(new ArrayIterator($meetings));
 	}
 
 	public function current() : ?Meeting{

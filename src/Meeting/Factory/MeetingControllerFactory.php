@@ -10,8 +10,15 @@ use Psr\Container\ContainerInterface;
 
 final class MeetingControllerFactory 
 {
-	public function __invoke(ContainerInterface $container) : MeetingController 
+    /**
+     * @param ContainerInterface $container
+     * @return MeetingController
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    public function __invoke(ContainerInterface $container) : MeetingController
 	{
+
 		$meetingRepository = $container->get(MeetingRepository::class);
 		
 		return new MeetingController($meetingRepository);

@@ -8,6 +8,7 @@ use Application\Controller\IndexController;
 use Application\Controller\LecturerController;
 use Cinema\Controller\FilmController;
 use Cinema\Controller\ShowFilmController;
+use Meeting\Controller\MeetingController;
 use Exception;
 
 use function explode;
@@ -29,6 +30,10 @@ final class ParseUriStaticNameHelper implements ParseUriHelper
         }
         if ($requestUri === '/film') {
             return FilmController::class;
+        }
+
+        if ($requestUri === '/meeting') {
+            return MeetingController::class;
         }
 
         if (preg_match('#/film/.*#', $requestUri)) {

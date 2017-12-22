@@ -1,0 +1,15 @@
+<html>
+<head>
+
+</head>
+<body>
+<h1>Liste des Meeting disponible</h1>
+<?php /* @var $Meetings \Meeting\Collection\MeetingCollection */ ?>
+<ul>
+  <?php foreach ($Meetings as $meeting):?>
+    <li><?= $meeting->getTitre()?></li>
+
+    <?php endforeach; ?>
+</ul>
+</body>
+</html>
