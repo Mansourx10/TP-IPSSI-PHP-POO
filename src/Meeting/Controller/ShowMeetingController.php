@@ -28,7 +28,7 @@ class ShowMeetingController
     {
         try {
             $meeting = $this->meetingRepository->getOrganisateur($_GET['name'] ?? '');
-
+            $participant = $this->meetingRepository->getParticipant($_GET['name'] ?? '');
             ob_start();
             include __DIR__.'/../../../views/meeting-details.phtml';
             return ob_get_clean();

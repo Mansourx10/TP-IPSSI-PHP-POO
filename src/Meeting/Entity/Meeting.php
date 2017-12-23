@@ -6,17 +6,36 @@ namespace Meeting\Entity;
 
 final class Meeting {
 
+    private $id;
+
 	private $titre;
 	private $description;
 	private $date_debut;
 	private $date_fin;
 
-	public function __construct(string $titre, string $desc, string $date_debut, string $date_fin){
-		$this->titre = $titre;
+	public function __construct(int $id, string $titre, string $desc, string $date_debut, string $date_fin){
+		$this->id = $id;
+	    $this->titre = $titre;
 			$this->description = $desc;
 				$this->date_debut = $date_debut;
 					$this->date_fin = $date_fin;
 	}
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
 
 	public function getTitre()
 	{

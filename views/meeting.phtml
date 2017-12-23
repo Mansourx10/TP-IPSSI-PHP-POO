@@ -7,7 +7,7 @@
 <?php /* @var $Meetings \Meeting\Collection\MeetingCollection */ ?>
 <ul>
   <?php foreach ($Meetings as $meeting):?>
-    <li><?= $meeting->getTitre()?></li>
+    <li><a href="meeting/<?= urlencode($meeting->getId()); ?>""> <?= $meeting->getTitre()?></a></li>
 
     <?php endforeach; ?>
 </ul>

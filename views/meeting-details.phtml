@@ -6,6 +6,17 @@
 </head>
 <body>
 <?php /* @var $meeting \Meeting\Entity\Meeting */ ?>
-<h1>Film details : <?php dump($meeting); ?></h1>
+<h1>Organisateur Meeting : </h1>
+<ul>
+    <?php foreach ($meeting as $data) :?>
+    <li><?= $data->getNom();  ?> <?= $data->getPrenom();?> </li>
+    <?php endforeach; ?>
+</ul>
+<h1>Participant Meeting </h1>
+<ul>
+    <?php foreach ($participant as $data) :?>
+        <li><?= $data->getNom();  ?> <?= $data->getPrenom();?> </li>
+    <?php endforeach; ?>
+</ul>
 </body>
 </html>
